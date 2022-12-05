@@ -174,3 +174,60 @@ newAccountingWithName.describe();
 // admins.addEmployees('EDDIE');
 // admins.describe();
 // admins.greetings();
+
+/**
+ * there are alos -
+ * @getter
+ * @setter
+ * @static - value and propery etc.
+ */
+
+//--------- ABSTRACT
+
+/**
+ * When you wanna set a method or properteis, which has no defined strucuter of how it should be implemented, rather leave it onto the classes that is instantiated from this class.
+ * This gives you flexibility and enforce to define the structure of teh methods or properties, the instantiated class requires.
+ *
+ * @IMPORTANT = >
+ * Abstract classes can not be instantiated with new keyword but be extended.
+ * extended class must have the abstract methods/ properties implemented
+ */
+
+// abstract class Demons {
+// 	constructor(public name: string, public power: string) {
+// 		(this.name = name), (this.power = power);
+// 	}
+
+// 	printOut() {
+// 		console.log(
+// 			` This is known as ${this.name}. Has the power of ${this.power}`
+// 		);
+// 	}
+
+// 	abstract superPower(this: Demons): void;
+// 	//👆 This way, we can create our own superPower
+// }
+
+// class Azkiban extends Demons {
+// 	constructor(name: string, power: string) {
+// 		super(name, power);
+// 	}
+
+// 	superPower(this: Demons): void {
+// 		console.log(
+// 			`${this.name} can drag you into the pit of darkness where various shadow creature dwells. Not all of them are benevolent..if any.`
+// 		);
+// 	}
+// }
+
+// const Ratata = new Azkiban('Ratata', 'disguise');
+
+// Ratata.printOut();
+// Ratata.superPower();
+
+//------- Singleton and Private constructor
+
+/**
+ * you wanna use this pattern, when you wanna create ONLY ONE instance out of a class.
+ *
+ */
