@@ -100,7 +100,9 @@ const divide: division = (a: number, b: number) => a / b;
 //*------ Optional parameters and properties
 
 // 👇  notice the ? marks
-interface login {
+
+/**
+*interface login {
 	password: number;
 	changePassword?: () => void;
 	isActive?: boolean;
@@ -145,3 +147,5 @@ user1 = new Person(
 	'I am getting better dealing with my stress everyday!',
 	1234
 );
+
+*/
