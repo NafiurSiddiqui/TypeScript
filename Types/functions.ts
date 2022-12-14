@@ -6,3 +6,7 @@ function add(n1: number, n2: number): number {
 add(2, 3);
 
 //TYPCIALLY leave it upto type inference than explicitly declaring it.
+
+type addFn = (a: number, b: number) => number;
+
+let substract: addFn;
