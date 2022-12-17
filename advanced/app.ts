@@ -34,7 +34,8 @@ type Universal = Combinable & Numeric;
 
 //------------- Type Guards
 
-type Admin = {
+/**
+*type Admin = {
 	name: string;
 	privilges: string[];
 };
@@ -79,3 +80,36 @@ function printEmployeeInformation(emp: UnknownEmployee) {
 		console.log(`Start Date: ${emp.startDate}`);
 	}
 }
+
+*/
+
+//------------- Discriminated Union
+
+interface Bird {
+	flyingSpeed: number;
+	type: 'bird'; //name is upto you
+}
+
+interface Horse {
+	runningSpeed: number;
+	type: 'Horse';
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+	let speed;
+	switch (animal.type) {
+		case 'bird':
+			speed = animal.flyingSpeed;
+			break;
+		case 'Horse':
+			speed = animal.runningSpeed;
+	}
+
+	console.log(`Moving at the speed of : ${speed}`);
+
+	// console.log(`Moving with speed: ${animal.runningSpeed}`);
+}
+
+moveAnimal({ type: 'bird', flyingSpeed: 1000 });
