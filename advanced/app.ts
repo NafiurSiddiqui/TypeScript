@@ -219,8 +219,14 @@ moveAnimal({ type: 'bird', flyingSpeed: 1000 });
 const fetchedUserData = {
 	id: 'u1',
 	name: 'Max',
-	job: {
-		title: 'CEO',
-		description: 'My own company',
-	},
+	// job: {
+	// 	title: 'CEO',
+	// 	description: 'My own company',
+	// },
 };
+
+console.log(fetchedUserData?.job?.title);
+
+//In case we did not have the job field, we optional chain
+
+//Dont worry about the error, since if the first one 'FethcedUserData' did not meet, it won't get to the job.
