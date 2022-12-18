@@ -187,6 +187,12 @@ type Numeric = number | boolean;
 
 type Universal = Combinable & Numeric;
 
+//righ above the function
+
+function add(a: string, b: string): string;
+function add(a: number, b: number): number;
+// 👆 commenting this out will return comibnable only types.
+
 function add(a: Combinable, b: Combinable) {
 	if (typeof a === 'string' || typeof b === 'string') {
 		return a.toString() + b.toString();
@@ -194,3 +200,13 @@ function add(a: Combinable, b: Combinable) {
 
 	return a + b;
 }
+
+//now in this case, whether the input is number or stirng, TS always return combinable here.
+
+// const result2 = add(5, 2);
+//👆 return same combinable
+
+// const resultStirng = add('Jonny', 'Staley');
+// result.split();
+
+// 👆 we cannot call stirng method since return type is mixed
