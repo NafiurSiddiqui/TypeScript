@@ -157,3 +157,5 @@ moveAnimal({ type: 'bird', flyingSpeed: 1000 });
 // if (userInputElement) {
 // 	(userInputElement as HTMLInputElement).value = 'Hi there';
 // }
+
+//------------- Index properties
