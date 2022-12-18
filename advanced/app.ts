@@ -159,3 +159,21 @@ moveAnimal({ type: 'bird', flyingSpeed: 1000 });
 // }
 
 //------------- Index properties
+
+//more flexible in terms of OBJ
+
+//Let's say we have a sceneario where we have multiple input fields, depending on the user input, field, we wanna show releavant Error message.
+
+interface ErrorContainer {
+	//{email: 'Not a valid email', username: 'must..'}
+	// 👇 either of any one type
+	id: string;
+	[prop: string]: string;
+	// id:number
+	// [prop:number]:number
+}
+
+const errorBag: ErrorContainer = {
+	id: 'A3Eggaf',
+	email: 'Not a vaild email',
+};
