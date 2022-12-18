@@ -164,16 +164,33 @@ moveAnimal({ type: 'bird', flyingSpeed: 1000 });
 
 //Let's say we have a sceneario where we have multiple input fields, depending on the user input, field, we wanna show releavant Error message.
 
-interface ErrorContainer {
-	//{email: 'Not a valid email', username: 'must..'}
-	// 👇 either of any one type
-	id: string;
-	[prop: string]: string;
-	// id:number
-	// [prop:number]:number
-}
+// interface ErrorContainer {
+// 	//{email: 'Not a valid email', username: 'must..'}
+// 	// 👇 either of any one type
+// 	id: string;
+// 	[prop: string]: string;
+// 	// id:number
+// 	// [prop:number]:number
+// }
 
-const errorBag: ErrorContainer = {
-	id: 'A3Eggaf',
-	email: 'Not a vaild email',
-};
+// const errorBag: ErrorContainer = {
+// 	id: 'A3Eggaf',
+// 	email: 'Not a vaild email',
+// };
+
+//----------- Function overloads
+
+//a feature that gives us to define multiple functions
+
+type Combinable = string | number;
+type Numeric = number | boolean;
+
+type Universal = Combinable & Numeric;
+
+function add(a: Combinable, b: Combinable) {
+	if (typeof a === 'string' || typeof b === 'string') {
+		return a.toString() + b.toString();
+	}
+
+	return a + b;
+}
