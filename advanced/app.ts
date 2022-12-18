@@ -1,4 +1,4 @@
-//-------------- INTERSECTION
+//*-------------- INTERSECTION
 
 /**
  * //EXAMPLE: 1
@@ -32,7 +32,7 @@ type Universal = Combinable & Numeric;
  * 
  */
 
-//------------- Type Guards
+//*------------- Type Guards
 
 /**
 *type Admin = {
@@ -83,7 +83,7 @@ function printEmployeeInformation(emp: UnknownEmployee) {
 
 */
 
-//------------- Discriminated Union
+//*------------- Discriminated Union
 
 /**
 *interface Bird {
@@ -117,7 +117,7 @@ moveAnimal({ type: 'bird', flyingSpeed: 1000 });
 
 */
 
-//--------- Type Casting
+//*--------- Type Casting
 
 //When TS can not detect a type that we know it exist.
 //for instance, we have a DOM input of id 'user-input'
@@ -158,63 +158,69 @@ moveAnimal({ type: 'bird', flyingSpeed: 1000 });
 // 	(userInputElement as HTMLInputElement).value = 'Hi there';
 // }
 
-//------------- Index properties
+//*------------- Index properties
 
-//more flexible in terms of OBJ
+/**
+ * //more flexible in terms of OBJ
 
 //Let's say we have a sceneario where we have multiple input fields, depending on the user input, field, we wanna show releavant Error message.
 
-// interface ErrorContainer {
-// 	//{email: 'Not a valid email', username: 'must..'}
-// 	// 👇 either of any one type
-// 	id: string;
-// 	[prop: string]: string;
-// 	// id:number
-// 	// [prop:number]:number
-// }
+interface ErrorContainer {
+	//{email: 'Not a valid email', username: 'must..'}
+	// 👇 either of any one type
+	id: string;
+	[prop: string]: string;
+	// id:number
+	// [prop:number]:number
+}
 
-// const errorBag: ErrorContainer = {
-// 	id: 'A3Eggaf',
-// 	email: 'Not a vaild email',
-// };
+const errorBag: ErrorContainer = {
+	id: 'A3Eggaf',
+	email: 'Not a vaild email',
+};
+ */
 
 //----------- Function overloads
 
-//a feature that gives us to define multiple functions
+/**
+ * / a feature that gives us to define multiple functions
 
-// type Combinable = string | number;
-// type Numeric = number | boolean;
+type Combinable = string | number;
+type Numeric = number | boolean;
 
-// type Universal = Combinable & Numeric;
+type Universal = Combinable & Numeric;
 
-// //righ above the function
+//righ above the function
 
-// function add(a: string, b: string): string;
-// function add(a: number, b: number): number;
-// // 👆 commenting this out will return comibnable only types.
-// //we can make more possible combination like this.
+function add(a: string, b: string): string;
+function add(a: number, b: number): number;
+// 👆 commenting this out will return comibnable only types.
+//we can make more possible combination like this.
 
-// function add(a: Combinable, b: Combinable) {
-// 	if (typeof a === 'string' || typeof b === 'string') {
-// 		return a.toString() + b.toString();
-// 	}
+function add(a: Combinable, b: Combinable) {
+	if (typeof a === 'string' || typeof b === 'string') {
+		return a.toString() + b.toString();
+	}
 
-// 	return a + b;
-// }
+	return a + b;
+}
 
-//now in this case, whether the input is number or stirng, TS always return combinable here.
+// now in this case, whether the input is number or stirng, TS always return combinable here.
 
-// const result2 = add(5, 2);
-//👆 return same combinable
+const result2 = add(5, 2);
+// 👆 return same combinable
 
-// const resultStirng = add('Jonny', 'Staley');
-// result.split();
+const resultStirng = add('Jonny', 'Staley');
+result.split();
 
 // 👆 we cannot call stirng method since return type is mixed
+ * 
+ */
 
 //*----------- OPTIONAL CHAINING
 
-//let say we are got some data with TS
+/**
+ * /let say we are got some data with TS
 
 const fetchedUserData = {
 	id: 'u1',
@@ -230,3 +236,24 @@ console.log(fetchedUserData?.job?.title);
 //In case we did not have the job field, we optional chain
 
 //Dont worry about the error, since if the first one 'FethcedUserData' did not meet, it won't get to the job.
+
+ */
+
+//*------------- Nullish Coelcing
+
+/**
+ * const userInput = null;
+
+const userInput2 = '';
+
+const storedData = userInput || 'DEFAULT';
+
+const storedData2 = userInput2 ?? 'DEFAULT';
+
+//In the case of 1, we will always get 'DEFAULT".
+//In the case of 2, we won't get 'Default' just the empty stirng we passed as we intended.
+
+console.log(storedData);
+console.log(storedData2);
+ * 
+ */
