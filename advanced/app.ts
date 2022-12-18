@@ -118,3 +118,42 @@ moveAnimal({ type: 'bird', flyingSpeed: 1000 });
 */
 
 //--------- Type Casting
+
+//When TS can not detect a type that we know it exist.
+//for instance, we have a DOM input of id 'user-input'
+
+// const userInput = document.getElementById('user-input');
+
+// userInput.value = 'Hi there!';
+
+// 👆 Does not work
+
+// const userInput = document.getElementById('user-input')!;
+
+// userInput.value = 'Hi there!';
+
+// 👆 Now only the HTML element is valid
+
+//FIX - 1
+
+// const userInput = <HTMLInputElement>document.getElementById('user-input')!;
+
+//FIX - 2
+
+// const userInput = document.getElementById('user-input')! as HTMLInputElement;
+
+// 👆 UseFul for REACT
+
+// userInput.value = 'Hi there!';
+
+// IN case we do not know that the element will not return anything null, we can not put EXCLAMATION MARK here ! and put DOM type at the end. We need to IF-check
+
+//FIX 3
+
+// const userInputElement = document.getElementById(
+// 	'user-input'
+// )! as HTMLInputElement;
+
+// if (userInputElement) {
+// 	(userInputElement as HTMLInputElement).value = 'Hi there';
+// }
