@@ -182,24 +182,25 @@ moveAnimal({ type: 'bird', flyingSpeed: 1000 });
 
 //a feature that gives us to define multiple functions
 
-type Combinable = string | number;
-type Numeric = number | boolean;
+// type Combinable = string | number;
+// type Numeric = number | boolean;
 
-type Universal = Combinable & Numeric;
+// type Universal = Combinable & Numeric;
 
-//righ above the function
+// //righ above the function
 
-function add(a: string, b: string): string;
-function add(a: number, b: number): number;
-// 👆 commenting this out will return comibnable only types.
+// function add(a: string, b: string): string;
+// function add(a: number, b: number): number;
+// // 👆 commenting this out will return comibnable only types.
+// //we can make more possible combination like this.
 
-function add(a: Combinable, b: Combinable) {
-	if (typeof a === 'string' || typeof b === 'string') {
-		return a.toString() + b.toString();
-	}
+// function add(a: Combinable, b: Combinable) {
+// 	if (typeof a === 'string' || typeof b === 'string') {
+// 		return a.toString() + b.toString();
+// 	}
 
-	return a + b;
-}
+// 	return a + b;
+// }
 
 //now in this case, whether the input is number or stirng, TS always return combinable here.
 
@@ -210,3 +211,16 @@ function add(a: Combinable, b: Combinable) {
 // result.split();
 
 // 👆 we cannot call stirng method since return type is mixed
+
+//*----------- OPTIONAL CHAINING
+
+//let say we are got some data with TS
+
+const fetchedUserData = {
+	id: 'u1',
+	name: 'Max',
+	job: {
+		title: 'CEO',
+		description: 'My own company',
+	},
+};
