@@ -85,7 +85,8 @@ function printEmployeeInformation(emp: UnknownEmployee) {
 
 //------------- Discriminated Union
 
-interface Bird {
+/**
+*interface Bird {
 	flyingSpeed: number;
 	type: 'bird'; //name is upto you
 }
@@ -113,3 +114,7 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({ type: 'bird', flyingSpeed: 1000 });
+
+*/
+
+//--------- Type Casting
