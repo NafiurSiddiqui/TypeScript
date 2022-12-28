@@ -47,13 +47,26 @@ promise.then((data) => {
 // mergeItems.name ; //!DO NOT WORK
 // mergeItems.year; //!Do not work
 
-function merge2<T, U>(objA: T, objB: U) {
+const merge2 = <T extends object, U>(objA: T, objB: U) => {
 	return Object.assign(objA, objB);
-}
+};
 
 // T and U just a naming convention
 //shoudl be one letter
 
-// const mergeItems2 = merge2({ name: 'Toto' }, { year: 1982 });
+const mergeItems2 = merge2(
+	{ name: 'Attashi', game: 'Batashit' },
+	{ year: 1982 }
+);
 
-// mergeItems.name;
+mergeItems2.name;
+
+const addID = <T>(obj: T) => {
+	let userID = Math.floor(Math.random() * 100);
+
+	return { ...obj, userID };
+};
+
+const userA = addID({ name: 'SumTing', age: 40 });
+
+console.log(userA.name);
