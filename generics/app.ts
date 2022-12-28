@@ -47,12 +47,13 @@ promise.then((data) => {
 // mergeItems.name ; //!DO NOT WORK
 // mergeItems.year; //!Do not work
 
-const merge2 = <T extends object, U>(objA: T, objB: U) => {
+const merge2 = <T extends object, U extends object>(objA: T, objB: U) => {
 	return Object.assign(objA, objB);
 };
 
+//should be one letter
 // T and U just a naming convention
-//shoudl be one letter
+//best to put CONSTRAIN by extending of some type.
 
 const mergeItems2 = merge2(
 	{ name: 'Attashi', game: 'Batashit' },
