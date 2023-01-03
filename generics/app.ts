@@ -47,27 +47,67 @@ promise.then((data) => {
 // mergeItems.name ; //!DO NOT WORK
 // mergeItems.year; //!Do not work
 
-const merge2 = <T extends object, U extends object>(objA: T, objB: U) => {
-	return Object.assign(objA, objB);
-};
+// const merge2 = <T extends object, U extends object>(objA: T, objB: U) => {
+// 	return Object.assign(objA, objB);
+// };
 
-//should be one letter
-// T and U just a naming convention
-//best to put CONSTRAIN by extending of some type.
+// //should be one letter
+// // T and U just a naming convention
+// //best to put CONSTRAIN by extending of some type.
 
-const mergeItems2 = merge2(
-	{ name: 'Attashi', game: 'Batashit' },
-	{ year: 1982 }
-);
+// const mergeItems2 = merge2(
+// 	{ name: 'Attashi', game: 'Batashit' },
+// 	{ year: 1982 }
+// );
 
-mergeItems2.name;
+// mergeItems2.name;
 
-const addID = <T>(obj: T) => {
-	let userID = Math.floor(Math.random() * 100);
+// const addID = <T>(obj: T) => {
+// 	let userID = Math.floor(Math.random() * 100);
 
-	return { ...obj, userID };
-};
+// 	return { ...obj, userID };
+// };
 
-const userA = addID({ name: 'SumTing', age: 40 });
+// const userA = addID({ name: 'SumTing', age: 40 });
 
-console.log(userA.name);
+// console.log(userA.name);
+
+//*---------- working with contraints
+
+//if we write a funciton like this, we won't have length available
+
+interface lengthy {
+	length: number; // Without extending from here, will throw error
+}
+function countAndDescribe<T extends lengthy>(el: T): [T, string] {
+	let descriptionText = 'Got no value';
+
+	if (el.length === 1) {
+		descriptionText = 'Got 1 elemnet';
+	} else if (el.length > 1) {
+		descriptionText = 'Got ' + el.length + ' elements';
+	}
+
+	return [el, descriptionText];
+}
+
+console.log(countAndDescribe('Hey there!'));
+
+/**
+ * @interfece - Wihtout extending from here won't have length
+ * @truple - [T, stirng] : we specifically set the return type
+ *
+ */
+
+//another example -
+
+function extractAndConver<T extends object, U extends keyof T>(obj: T, key: U) {
+	return 'Value: ' + obj[key];
+}
+
+extractAndConver({ name: 'Max' }, 'name');
+
+/**
+ * HERE WE DONT GET THE KEY
+ * @extends keyof - When we want to get the key, we need to specify where do we want to get the Key from
+ */
