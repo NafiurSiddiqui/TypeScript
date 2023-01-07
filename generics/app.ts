@@ -150,31 +150,31 @@ const numberStorage = new DataStorage<number>();
 
 //* Generic Utility - Partials, Readonly
 
-interface CourseGoal {
-	title: string;
-	description: string;
-	completeUntil: Date;
-}
+// interface CourseGoal {
+// 	title: string;
+// 	description: string;
+// 	completeUntil: Date;
+// }
 
-function createCourseGoal(
-	title: string,
-	description: string,
-	date: Date
-): CourseGoal {
-	// return { title: title, description: description, completeUntil: date };
-	//bt if we wanted to do this ↙️, we needed a different approach
+// function createCourseGoal(
+// 	title: string,
+// 	description: string,
+// 	date: Date
+// ): CourseGoal {
+// 	// return { title: title, description: description, completeUntil: date };
+// 	//bt if we wanted to do this ↙️, we needed a different approach
 
-	let courseGoal: Partial<CourseGoal> = {};
+// 	let courseGoal: Partial<CourseGoal> = {};
 
-	courseGoal.title = title;
-	courseGoal.description = description;
-	courseGoal.completeUntil = date;
-	return courseGoal as CourseGoal;
-}
+// 	courseGoal.title = title;
+// 	courseGoal.description = description;
+// 	courseGoal.completeUntil = date;
+// 	return courseGoal as CourseGoal;
+// }
 
 // If we wanted to lock something down
 
-const names: Readonly<string[]> = ['Name', 'Ratata'];
+// const names: Readonly<string[]> = ['Name', 'Ratata'];
 
 // names.push('Aha');
 // names.pop('Aha')
