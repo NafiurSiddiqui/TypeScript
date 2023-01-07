@@ -145,4 +145,42 @@ const numberStorage = new DataStorage<number>();
 
 /**
  * @NOTE : Make sure you only work with primitive values like this. If you want to work with non-primitive values like object or arrays, create a seperate class and logic for them.
+ *  You can also extends and use constraints
+ */
+
+//* Generic Utility - Partials, Readonly
+
+interface CourseGoal {
+	title: string;
+	description: string;
+	completeUntil: Date;
+}
+
+function createCourseGoal(
+	title: string,
+	description: string,
+	date: Date
+): CourseGoal {
+	// return { title: title, description: description, completeUntil: date };
+	//bt if we wanted to do this ↙️, we needed a different approach
+
+	let courseGoal: Partial<CourseGoal> = {};
+
+	courseGoal.title = title;
+	courseGoal.description = description;
+	courseGoal.completeUntil = date;
+	return courseGoal as CourseGoal;
+}
+
+// If we wanted to lock something down
+
+const names: Readonly<string[]> = ['Name', 'Ratata'];
+
+// names.push('Aha');
+// names.pop('Aha')
+
+/**
+ *  Can't do 👆 this since we set it to readonly.
+ *
+ *
  */
