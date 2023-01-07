@@ -76,22 +76,22 @@ promise.then((data) => {
 
 //if we write a funciton like this, we won't have length available
 
-interface lengthy {
-	length: number; // Without extending from here, will throw error
-}
-function countAndDescribe<T extends lengthy>(el: T): [T, string] {
-	let descriptionText = 'Got no value';
+// interface lengthy {
+// 	length: number; // Without extending from here, will throw error
+// }
+// function countAndDescribe<T extends lengthy>(el: T): [T, string] {
+// 	let descriptionText = 'Got no value';
 
-	if (el.length === 1) {
-		descriptionText = 'Got 1 elemnet';
-	} else if (el.length > 1) {
-		descriptionText = 'Got ' + el.length + ' elements';
-	}
+// 	if (el.length === 1) {
+// 		descriptionText = 'Got 1 elemnet';
+// 	} else if (el.length > 1) {
+// 		descriptionText = 'Got ' + el.length + ' elements';
+// 	}
 
-	return [el, descriptionText];
-}
+// 	return [el, descriptionText];
+// }
 
-console.log(countAndDescribe('Hey there!'));
+// console.log(countAndDescribe('Hey there!'));
 
 /**
  * @interfece - Wihtout extending from here won't have length
@@ -101,13 +101,48 @@ console.log(countAndDescribe('Hey there!'));
 
 //another example -
 
-function extractAndConver<T extends object, U extends keyof T>(obj: T, key: U) {
-	return 'Value: ' + obj[key];
-}
+// function extractAndConver<T extends object, U extends keyof T>(obj: T, key: U) {
+// 	return 'Value: ' + obj[key];
+// }
 
-extractAndConver({ name: 'Max' }, 'name');
+// extractAndConver({ name: 'Max' }, 'name');
 
 /**
  * HERE WE DONT GET THE KEY
  * @extends keyof - When we want to get the key, we need to specify where do we want to get the Key from
+ */
+
+//* CLASS
+
+class DataStorage<T> {
+	private data: T[] = [];
+
+	addItem(item: T) {
+		this.data.push(item);
+	}
+
+	removeItem(item: T) {
+		this.data.splice(this.data.indexOf(item), 1);
+	}
+
+	getItems() {
+		return [...this.data];
+	}
+}
+
+const textStorage = new DataStorage<string>();
+
+// textStorage.addItem(2); //can not put number here
+textStorage.addItem('Helena');
+textStorage.addItem('Rabivach');
+// textStorage.removeItem('Rabivach');
+textStorage.getItems();
+console.log(textStorage.getItems());
+
+//we Can ALso only add number or both
+
+const numberStorage = new DataStorage<number>();
+
+/**
+ * @NOTE : Make sure you only work with primitive values like this. If you want to work with non-primitive values like object or arrays, create a seperate class and logic for them.
  */
