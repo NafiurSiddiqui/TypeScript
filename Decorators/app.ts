@@ -10,10 +10,7 @@
 // 	console.log('Logging..');
 // 	console.log(constructor);
 // }
-
-/**
- * 
- * //*---- Decorator factory
+//*---- Decorator factory
 
 function Logger(loginMsg: string) {
 	return function (constructor: Function) {
@@ -35,30 +32,24 @@ const someone = new Person();
 
 console.log(someone);
 
- * 
- */
-
 //* Custom decorator
 
-function WithTemplate(template: string, hookID: string, descriptionID: string) {
-	return function (constructor: any) {
-		const titleholder = document.getElementById(hookID);
-		const descriptionholder = document.getElementById(descriptionID);
-		const game = new constructor('Sonic Wings', 'Best dog fight game ever!');
-		if (hookID && descriptionholder) {
-			titleholder!.innerHTML = template;
-			descriptionholder!.textContent = game.description;
-		}
-	};
-}
+// function WithTemplate(template: string, hookID: string) {
+// 	return function (_: Function) {
+// 		const hookEL = document.getElementById(hookID)!;
+// 		console.log(hookEL);
+// 		// const game = new constructor('Sonic Wings');
+// 		if (hookEL) {
+// 			hookEL.innerHTML = template;
+// 		}
+// 	};
+// }
 
-@WithTemplate('<h1> BEST GAME </h2>', 'title', 'description')
-class Game {
-	title: string = '';
-	description: string = '';
+// @WithTemplate('<h1> BEST GAME </h1>', 'app')
+// class Game {
+// 	title = '';
 
-	constructor(title: string, description: string) {
-		this.title = title;
-		this.description = description;
-	}
-}
+// 	constructor(title: string) {
+// 		this.title = title;
+// 	}
+// }
